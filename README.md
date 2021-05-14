@@ -18,3 +18,6 @@ Estilizações globais adicionais devem ser declaradas no arquivo `angular.json`
 
 ## Diretivas
 1. *ngFor - Diretiva para iterar uma lista, sendo aplicada diretamente no componente
+
+## Injeção de dependência
+As dependências necessárias devem ser declaradas no constructor de cada componente, assim o Angular "injeta" a dependência solicita na classe instanciada, o provedor desta dependência (provider) deve ser declarado no `.module.ts`
