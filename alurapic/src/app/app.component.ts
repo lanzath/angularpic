@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -7,15 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-    photos = [
-        {
-            url: 'https://img.wattpad.com/cover/192306297-256-k724565.jpg',
-            description: 'anai'
-        },
-        {
-            url: 'https://ami.animecharactersdatabase.com/uploads/chars/67712-27142636.png',
-            description: 'resasuke'
-        }
-    ];
+    photos: Object[] = [];
+
+    constructor(http: HttpClient) {
+
+        // O HttpClient semprse devolverá um Observable
+        // É necesário que o componente esteja inscrito (subscribe()) no observable para obter o return
+        // Utilizado explicit casting do typescript para garantir que o que será trazido pelo http.get será um array de objetos.
+        http
+            .get<Object[]>('http://localhost:3000/lanza/photos')
+            .subscribe(
+                photos => this.photos = photos,
+                err => console.log(err.message)
+            );
+    }
+
 
 }
