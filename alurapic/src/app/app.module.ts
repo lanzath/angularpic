@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { PhotosModule } from './photos/photos.module';
 import { ErrorsModule } from './errors/errors.module';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ErrorsModule } from './errors/errors.module';
     PhotosModule,
     HttpClientModule,
     AppRoutingModule,
-    ErrorsModule
+    ErrorsModule,
+    HomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
