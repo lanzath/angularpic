@@ -3,7 +3,8 @@
 <form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
 
     <div class="form-group">
-        <input
+        <!-- variável de template (#) -->
+        <input #userNameInput
             formControlName="userName"
             class="form-control"
             placeholder="user name"
