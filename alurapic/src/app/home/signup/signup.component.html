@@ -1,6 +1,6 @@
 <h4 class="text-center"> Register to embrace a new world!</h4>
 
-<form [formGroup]="signupForm" class="form mt-4">
+<form [formGroup]="signupForm" class="form mt-4" (submit)="signup()">
     <div class="form-group">
         <input formControlName="email" placeholder="email" class="form-control" autofocus >
         <app-vmessage
@@ -44,9 +44,15 @@
             text="Maximum length is 30">
         </app-vmessage>
         <app-vmessage
-            *ngIf="signupForm.get('userName').errors?.pattern"
+            *ngIf="signupForm.get('userName').errors?.lowerCase"
             text="Must be lower case">
         </app-vmessage>
+
+        <app-vmessage
+            text="Username already taken"
+            *ngIf="signupForm.get('userName').errors?.userNameTaken">
+        </app-vmessage>
+        <small *ngIf="signupForm.get('userName').valid" class="text-success">User available</small>
     </div>
 
     <div class="form-group">
@@ -57,7 +63,7 @@
         </app-vmessage>
     </div>
 
-    <button class="btn btn-primary btn-block">Register</button>
+    <button [disabled]="signupForm.invalid  || signupForm.pending" class="btn btn-primary btn-block">Register</button>
 
     <p>Already a user? <a [routerLink]="['']">Sign In!</a></p>
 </form>
