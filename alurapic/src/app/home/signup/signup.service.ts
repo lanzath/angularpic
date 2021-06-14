@@ -5,9 +5,7 @@ import { Observable } from 'rxjs';
 
 const API_URI = 'http://localhost:3000'
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class SignUpService {
 
     constructor(private http: HttpClient) { }
