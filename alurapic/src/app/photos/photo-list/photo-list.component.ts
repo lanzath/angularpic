@@ -22,11 +22,14 @@ export class PhotoListComponent implements OnInit {
         private photoService: PhotoService
     ) {}
 
-    ngOnInit(): void {
-        this.userName = this.activatedRoute.snapshot.params.userName;
+    ngOnInit() {
+        // Subscribe no activatedRoute para captar as alterações de parâmetro da rota (userName).
+        this.activatedRoute.params.subscribe(params => {
+            this.userName = params.userName
 
-        // Atribui a photos os dados gerados pelo Resolver antes da inicialização do componente.
-        this.photos = this.activatedRoute.snapshot.data['photos'];
+            // Atribui a photos os dados gerados pelo Resolver antes da inicialização do componente.
+            this.photos = this.activatedRoute.snapshot.data['photos'];
+        });
     }
 
     load() {
