@@ -35,9 +35,13 @@ const routes: Routes = [
         component: PhotoDetailsComponent,
     },
     {
-        path: '**',
+        path: 'not-found    ',
         component: NotFoundComponent
-    }, // para qualquer outra rota digitada que não seja uma das cadastradas
+    },
+    {
+        path: '**',
+        redirectTo: 'not-found'
+    },
 ];
 
 @NgModule({
