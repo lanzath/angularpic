@@ -6,7 +6,9 @@ import { map, catchError } from 'rxjs/operators';
 import { Photo } from './IPhoto';
 import { PhotoComments } from '../photo-details/photo-comments/IPhotoComment';
 
-const API = 'http://localhost:3000';
+import { environment } from '../../../environments/environment';
+
+const API = environment.apiURI;
 
 // O decorator Injectable permite que a classe seja injetada em toda a aplicação (providedIn root)
 @Injectable({ providedIn: 'root' })
