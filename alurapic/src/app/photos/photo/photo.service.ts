@@ -36,7 +36,15 @@ export class PhotoService {
         formData.append('allowComments', allowComments ? 'true' : 'false');
         formData.append('imageFile', file);
 
-        return this.http.post(`${API}/photos/upload`, formData);
+        // O objeto de options vai observar os eventos e reportar o progresso.
+        return this.http.post(
+            `${API}/photos/upload`,
+            formData,
+            {
+                observe: 'events',
+                reportProgress: true
+            }
+        );
     }
 
     findById(id: number) {
